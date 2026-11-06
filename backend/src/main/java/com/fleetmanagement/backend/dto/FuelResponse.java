@@ -1,7 +1,5 @@
 package com.fleetmanagement.backend.dto;
 
-import com.fleetmanagement.backend.entity.Vehicle;
-
 import java.util.Date;
 
 public class FuelResponse {

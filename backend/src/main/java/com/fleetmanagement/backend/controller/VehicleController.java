@@ -1,6 +1,6 @@
 package com.fleetmanagement.backend.controller;
 
-import com.fleetmanagement.backend.entity.Vehicle;
+import com.fleetmanagement.backend.entity.VehicleEntity;
 import com.fleetmanagement.backend.service.VehicleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,21 +13,21 @@ public class VehicleController {
     public VehicleController(VehicleService vehicleService){this.vehicleService = vehicleService;}
 
     @PostMapping
-    public Vehicle createVehicle(@RequestBody Vehicle vehicle ) {
+    public VehicleEntity createVehicle(@RequestBody VehicleEntity vehicle ) {
         return vehicleService.createVehicle(vehicle);
     }
 
     @GetMapping("/{id}")
-    public Vehicle getVehicleById (@PathVariable Long id) {
+    public VehicleEntity getVehicleById (@PathVariable Long id) {
         return vehicleService.getVehicleById(id);
     }
     @GetMapping
-    public List<Vehicle> getAllVehicles (){
+    public List<VehicleEntity> getAllVehicles (){
         return vehicleService.getAllVehicles();
     }
 
     @PutMapping("/{id}")
-    public Vehicle updateVehicle(@PathVariable Long id ,@RequestBody Vehicle vehicle ) {
+    public VehicleEntity updateVehicle(@PathVariable Long id , @RequestBody VehicleEntity vehicle ) {
         return vehicleService.updateVehicle(id,vehicle);
     }
     @DeleteMapping("/{id}")

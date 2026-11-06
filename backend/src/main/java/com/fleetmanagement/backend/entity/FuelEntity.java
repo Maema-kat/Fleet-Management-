@@ -16,7 +16,7 @@ public class FuelEntity {
 
     @OneToMany
     @JoinColumn(name="vehicle_id")
-    private Vehicle vehicle ;
+    private VehicleEntity vehicle ;
     private double liters;
     private int cost ;
     private double odometer ;
@@ -24,7 +24,7 @@ public class FuelEntity {
 
 
     public FuelEntity() {}
-    public FuelEntity(Long fuelId,Vehicle vehicle,double liters ,int cost ,double odometer,Date date){
+    public FuelEntity(Long fuelId, VehicleEntity vehicle, double liters , int cost , double odometer, Date date){
         this.fuelId =fuelId;
         this.cost =cost ;
         this.vehicle = vehicle;
@@ -37,13 +37,13 @@ public class FuelEntity {
     public long getFuelId() {
         return fuelId;
     }
-    public Vehicle getVehicle() {return vehicle;}
+    public VehicleEntity getVehicle() {return vehicle;}
     public double getLiters() {return  liters;}
     public int getCost() {return  cost;}
     public double getOdometer() {return odometer;}
     public Date getDate() {return date;}
 
-    public void setVehicle(Vehicle vehicle) {this.vehicle = vehicle;}
+    public void setVehicle(VehicleEntity vehicle) {this.vehicle = vehicle;}
     public void setLiters(Double liters){this.liters = liters;}
     public void setCost(int cost){this.cost =cost ;}
     public void setOdometer(double odometer) {this.odometer =odometer;}

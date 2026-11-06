@@ -1,31 +1,36 @@
+
+
+
 package com.fleetmanagement.backend.dto;
 
-import com.fleetmanagement.backend.entity.Driver;
-import com.fleetmanagement.backend.entity.Vehicle;
-
-import java.util.Date;
+import jakarta.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 public class AssignmentRequest {
-    private Long assignmentId;
-    private Vehicle vehicle;
-    private Driver driver;
-    private String status ;
-    private Date startDate;
-    private Date endDate;
 
+    @NotNull
+    private Long driverId;
 
-    public Long getAssignmentId() {return  assignmentId;}
-    public Vehicle getVehicle() {return vehicle;}
-    public Driver getDriver() {return driver;}
-    public String getStatus() {return status ;}
-    public Date getStartDate() {return startDate;}
-    public Date getEndDate() {return endDate;}
+    @NotNull
+    private Long vehicleId;
 
-    public void setAssignmentId(Long assignmentId) {this.assignmentId=assignmentId;}
-    public void setVehicle(Vehicle vehicle){this.vehicle =vehicle;}
-    public void setDriver(Driver driver){this.driver = driver;}
-    public void setStatus (String status){this.status = status ;}
-    public void setStartDate (Date startDate){this.startDate= startDate;}
-    public void setEndDate (Date endDate){this.endDate =endDate;}
+    @NotNull
+    private LocalDate startDate;
 
+    @NotNull
+    private LocalDate endDate;
+
+    public AssignmentRequest() {}
+
+    public Long getDriverId() { return driverId; }
+    public void setDriverId(Long driverId) { this.driverId = driverId; }
+
+    public Long getVehicleId() { return vehicleId; }
+    public void setVehicleId(Long vehicleId) { this.vehicleId = vehicleId; }
+
+    public LocalDate getStartDate() { return startDate; }
+    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+
+    public LocalDate getEndDate() { return endDate; }
+    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
 }

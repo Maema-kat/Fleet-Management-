@@ -3,7 +3,7 @@ package com.fleetmanagement.backend.service;
 import com.fleetmanagement.backend.dto.FuelResponse;
 import com.fleetmanagement.backend.dto.FuelRequest;
 import com.fleetmanagement.backend.entity.FuelEntity;
-import com.fleetmanagement.backend.entity.Vehicle;
+import com.fleetmanagement.backend.entity.VehicleEntity;
 import com.fleetmanagement.backend.repository.FuelRepository;
 import com.fleetmanagement.backend.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class FuelService {
 
     public FuelResponse createFuel(FuelRequest request) {
 
-        Vehicle vehicle = vehicleRepository.findById(request.getVehicleId())
+        VehicleEntity vehicle = vehicleRepository.findById(request.getVehicleId())
                 .orElseThrow(() -> new RuntimeException("Vehicle not found"));
 
         FuelEntity fuel = new FuelEntity();

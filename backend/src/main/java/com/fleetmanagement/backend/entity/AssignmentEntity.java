@@ -1,39 +1,52 @@
 package com.fleetmanagement.backend.entity;
-import com.fleetmanagement.backend.entity.Vehicle;
-import com.fleetmanagement.backend.entity.Driver;
 
+import com.fleetmanagement.backend.enums.AssignmentStatus;
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-@Table(name="assignments")
+@Table(name = "assignments")
 public class AssignmentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long assignmentId;
-    private Vehicle vehicle;
-    private Driver driver;
-    private String status ;
-    private Date startDate;
-    private Date endDate;
+    private Long id;
 
-public AssignmentEntity() {}
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "vehicle_id", nullable = false)
+    private VehicleEntity vehicle;
 
-    public Long getAssignmentId() {return  assignmentId;}
-    public Vehicle getVehicle() {return vehicle;}
-    public Driver getDriver() {return driver;}
-    public String getStatus() {return status ;}
-    public Date getStartDate() {return startDate;}
-    public Date getEndDate() {return endDate;}
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "driver_id", nullable = false)
+    private DriverEntity driver;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AssignmentStatus status = AssignmentStatus.ACTIVE;
 
-    public void setVehicle(Vehicle vehicle){this.vehicle =vehicle;}
-    public void setDriver(Driver driver){this.driver = driver;}
-    public void setStatus (String status){this.status = status ;}
-    public void setStartDate (Date startDate){this.startDate= startDate;}
-    public void setEndDate (Date endDate){this.endDate =endDate;}
+    @Column(nullable = false)
+    private LocalDate startDate;
 
+    @Column(nullable = false)
+    private LocalDate endDate;
 
+    public AssignmentEntity() {}
+
+    public Long getId() { return id; }
+
+    public VehicleEntity getVehicle() { return vehicle; }
+    public void setVehicle(VehicleEntity vehicle) { this.vehicle = vehicle; }
+
+    public DriverEntity getDriver() { return driver; }
+    public void setDriver(DriverEntity driver) { this.driver = driver; }
+
+    public AssignmentStatus getStatus() { return status; }
+    public void setStatus(AssignmentStatus status) { this.status = status; }
+
+    public LocalDate getStartDate() { return startDate; }
+    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+
+    public LocalDate getEndDate() { return endDate; }
+    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
 }

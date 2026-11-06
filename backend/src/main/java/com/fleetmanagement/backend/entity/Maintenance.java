@@ -13,7 +13,7 @@ public class Maintenance {
 
     @OneToMany
     @JoinColumn(name ="vehicle_id")
-    private Vehicle vehicle ;
+    private VehicleEntity vehicle ;
     private Date maintenanceDate ;
     private String description ;
     private int cost;
@@ -22,7 +22,7 @@ public class Maintenance {
     private Mechanic mechanic;
 
     public Maintenance () {}
-    public Maintenance(Long id , Vehicle vehicle ,Date maintenanceDate,String description,int cost ,double odometer,String status ,Mechanic mechanic) {
+    public Maintenance(Long id , VehicleEntity vehicle , Date maintenanceDate, String description, int cost , double odometer, String status , Mechanic mechanic) {
         this.id = id ;
         this.vehicle =vehicle ;
         this.maintenanceDate = maintenanceDate;
@@ -34,7 +34,7 @@ public class Maintenance {
 
     }
     public Long getId() {return id ;}
-    public Vehicle getVehicle() {return vehicle;}
+    public VehicleEntity getVehicle() {return vehicle;}
     public Date getMaintenanceDate() {return maintenanceDate;}
     public String getDescription() {return description;}
     public int getCost() {return  cost ;}
@@ -42,7 +42,7 @@ public class Maintenance {
     public Mechanic getMechanic() {return mechanic;}
     public double getOdometer() {return  odometer;}
 
-    public void setVehicle(Vehicle vehicle) {this.vehicle = vehicle;}
+    public void setVehicle(VehicleEntity vehicle) {this.vehicle = vehicle;}
     public void setMaintenanceDate(Date maintenanceDate ) {this.maintenanceDate = maintenanceDate;}
     public void setDescription(String description) {this.description = description;}
     public void setCost(int cost) {this.cost =cost ;}

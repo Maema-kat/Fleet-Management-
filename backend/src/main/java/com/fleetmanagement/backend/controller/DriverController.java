@@ -1,6 +1,6 @@
 package com.fleetmanagement.backend.controller;
 
-import com.fleetmanagement.backend.entity.Driver;
+import com.fleetmanagement.backend.entity.DriverEntity;
 import com.fleetmanagement.backend.service.DriverService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,24 +17,24 @@ import java.util.List;
         }
 
         @PostMapping
-        public Driver createDriver(@RequestBody Driver driver) {
+        public DriverEntity createDriver(@RequestBody DriverEntity driver) {
             return driverService.createDriver(driver);
         }
 
         @GetMapping
-        public List<Driver> getAllDrivers() {
+        public List<DriverEntity> getAllDrivers() {
             return driverService.getAllDrivers();
         }
 
         @GetMapping("/{id}")
-        public Driver getDriverById(@PathVariable Long id) {
+        public DriverEntity getDriverById(@PathVariable Long id) {
             return driverService.getDriverById(id);
         }
 
         @PutMapping("/{id}")
-        public Driver updateDriver(
+        public DriverEntity updateDriver(
                 @PathVariable Long id,
-                @RequestBody Driver driver) {
+                @RequestBody DriverEntity driver) {
 
             return driverService.updateDriver(id, driver);
         }

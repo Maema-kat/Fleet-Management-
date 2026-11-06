@@ -5,7 +5,7 @@ import com.fleetmanagement.backend.dto.TripResponse;
 import com.fleetmanagement.backend.entity.AssignmentEntity;
 import com.fleetmanagement.backend.entity.TripEntity;
 import com.fleetmanagement.backend.repository.TripRepository;
-import com.fleetmanagement.backend.repository.Assignment;
+import com.fleetmanagement.backend.repository.AssignmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,11 +16,11 @@ public class TripService {
 
 
         private final TripRepository tripRepository;
-        private final Assignment assignmentRepository;
+        private final AssignmentRepository assignmentRepository;
 
         public TripService(
                 TripRepository tripRepository,
-                Assignment assignmentRepository) {
+                AssignmentRepository assignmentRepository) {
 
             this.tripRepository = tripRepository;
             this.assignmentRepository = assignmentRepository;

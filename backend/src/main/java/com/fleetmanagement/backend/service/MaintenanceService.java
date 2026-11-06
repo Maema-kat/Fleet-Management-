@@ -4,7 +4,7 @@ import com.fleetmanagement.backend.dto.MaintenanceRequest;
 import com.fleetmanagement.backend.dto.MaintenanceResponse;
 import com.fleetmanagement.backend.entity.Maintenance;
 import com.fleetmanagement.backend.entity.Mechanic;
-import com.fleetmanagement.backend.entity.Vehicle;
+import com.fleetmanagement.backend.entity.VehicleEntity;
 import com.fleetmanagement.backend.repository.MaintenanceRepository;
 import com.fleetmanagement.backend.repository.MechanicRepository;
 import com.fleetmanagement.backend.repository.VehicleRepository;
@@ -30,7 +30,7 @@ public class MaintenanceService {
         public MaintenanceResponse createMaintenance(
                 MaintenanceRequest request) {
 
-            Vehicle vehicle = vehicleRepository.findById(
+            VehicleEntity vehicle = vehicleRepository.findById(
                     request.getVehicleId()
             ).orElseThrow(() ->
                     new RuntimeException("Vehicle not found"));

@@ -1,9 +1,5 @@
 package com.fleetmanagement.backend.dto;
 
-import com.fleetmanagement.backend.entity.Mechanic;
-import com.fleetmanagement.backend.entity.Vehicle;
-
-import java.time.LocalDate;
 import java.util.Date;
 
 public class MaintenanceResponse {
