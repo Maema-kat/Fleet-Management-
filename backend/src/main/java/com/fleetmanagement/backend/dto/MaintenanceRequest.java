@@ -1,29 +1,37 @@
 package com.fleetmanagement.backend.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 public class MaintenanceRequest {
+    @NotNull
     private Long vehicleId;
+    @NotNull
     private Long mechanicId;
-    private Date maintenanceDate;
+    @NotNull
+    private LocalDate maintenanceDate;
+    @NotBlank
     private String description;
-    private int cost;
-    private Double odometer;
+    @PositiveOrZero
+    private Double cost;
+    private Long odometer;
 
-    public MaintenanceRequest() {
-    }
-
-    public Long getVehicleId() {return vehicleId;}
-    public Date getMaintenanceDate() {return maintenanceDate;}
-    public String getDescription() {return description;}
-    public int getCost() {return  cost ;}
+    public Long getVehicleId () {return vehicleId;}
     public Long getMechanicId() {return mechanicId;}
-    public double getOdometer() {return  odometer;}
+    public LocalDate getMaintenanceDate() {return maintenanceDate;}
+    public String getDescription () {return description;}
+    public Double getCost () {return cost;}
+    public Long getOdometer() {return  odometer;}
 
-    public void setVehicleId(Long vehicleId) {this.vehicleId = vehicleId;}
-    public void setMaintenanceDate(Date maintenanceDate ) {this.maintenanceDate = maintenanceDate;}
-    public void setDescription(String description) {this.description = description;}
-    public void setCost(int cost) {this.cost =cost ;}
-    public void setOdometer(double odometer) {this.odometer = odometer;}
-    public void setMechanicId(Long mechanicId) {this.mechanicId = mechanicId;}
+    public void setVehicleId (Long vehicleId) {this.vehicleId = vehicleId;}
+    public void setMechanicId (Long mechanicId) {this.mechanicId = mechanicId;}
+    public void setMaintenanceDate (LocalDate maintenanceDate) {this.maintenanceDate =maintenanceDate;}
+    public void setDescription (String description) {this.description = description;}
+    public void setCost (Double cost) {this.cost = cost;}
+    public void setOdometer (Long odometer) {this.odometer = odometer;}
+
 }

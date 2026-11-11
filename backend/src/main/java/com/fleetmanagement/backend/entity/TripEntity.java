@@ -1,5 +1,7 @@
 package com.fleetmanagement.backend.entity;
 
+import com.fleetmanagement.backend.enums.MaintenanceStatus;
+import com.fleetmanagement.backend.enums.TripStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -20,16 +22,19 @@ public class TripEntity {
         private LocalDateTime startDateTime;
         private LocalDateTime endDateTime;
 
-        private Double startOdometer;
-        private Double endOdometer;
+     @Column(nullable = false)
+    private Long startOdometer;
 
-        private Double startFuelLevel;
+    private Long endOdometer;
+
+
+    private Double startFuelLevel;
         private Double endFuelLevel;
 
         private String destination;
         private String purpose;
 
-        private String status;
+        private TripStatus status;
 
         public TripEntity() {
         }
@@ -39,21 +44,21 @@ public class TripEntity {
     public AssignmentEntity getAssignment() {return assignment;}
     public LocalDateTime getStartDateTime () {return startDateTime;}
     public LocalDateTime getEndDateTime () {return endDateTime;}
-    public Double getStartOdometer() {return startOdometer;}
-    public Double getEndOdometer() {return endOdometer;}
+    public Long getStartOdometer() { return startOdometer; }
+    public Long getEndOdometer() { return endOdometer; }
     public Double getStartFuelLevel() {return startFuelLevel;}
     public Double getEndFuelLevel() {return endFuelLevel;}
     public String getDestination() {return destination;}
     public String getPurpose() {return purpose;}
-    public String getStatus() {return status;}
+    public TripStatus getStatus() {return status;}
 
     public void setAssignment (AssignmentEntity assignment) {this.assignment = assignment;}
     public void setStartDateTime(LocalDateTime startDateTime){this.startDateTime = startDateTime;}
     public void setEndDateTime (LocalDateTime endDateTime) {this.endDateTime = endDateTime;}
-    public void setStartOdometer(Double startOdometer){this.startOdometer = startOdometer;}
-    public void setEndOdometer (Double endOdometer) {this.startOdometer =endOdometer;}
+    public void setStartOdometer(Long startOdometer) { this.startOdometer = startOdometer; }
+    public void setEndOdometer(Long endOdometer) { this.endOdometer = endOdometer; }
     public void setStartFuelLevel (Double startFuelLevel) {this.startFuelLevel = startFuelLevel;}
-    public void setStatus (String status){this.status =status ;}
+    public void setStatus (TripStatus status){this.status =status ;}
     public void setEndFuelLevel(Double endFuelLevel){this.endFuelLevel = endFuelLevel;}
     public void setDestination(String destination){this.destination=destination;}
     public void setPurpose(String purpose ) {this.purpose =purpose;}

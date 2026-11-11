@@ -1,58 +1,49 @@
 package com.fleetmanagement.backend.dto;
 
-import com.fleetmanagement.backend.entity.AssignmentEntity;
+import com.fleetmanagement.backend.entity.TripEntity;
+import com.fleetmanagement.backend.enums.TripStatus;
 
 import java.time.LocalDateTime;
 
-public class TripResponse {
+public record TripResponse(
+        Long id,
+        Long assignmentId,
+        LocalDateTime startDateTime,
+        LocalDateTime endDateTime,
+        Long startOdometer,
+        Long endOdometer,
+        Double startFuelLevel,
+        Double endFuelLevel,
+        Long distanceTravelled,
+        Double fuelLevelUsed,
+        String destination,
+        String purpose,
+        TripStatus status
+) {
+    public static TripResponse from(TripEntity tr) {
 
-    private Long id;
+        Long distance = (tr.getEndOdometer() != null)
+                ? tr.getEndOdometer() - tr.getStartOdometer()
+                : null;
 
-    private AssignmentEntity assignment;
+        Double fuelUsed = (tr.getEndFuelLevel() != null)
+                ? tr.getStartFuelLevel() - tr.getEndFuelLevel()
+                : null;
 
-    private LocalDateTime startDateTime;
-    private LocalDateTime endDateTime;
-
-    private Double startOdometer;
-    private Double endOdometer;
-
-    private Double startFuelLevel;
-    private Double endFuelLevel;
-
-    private String destination;
-    private String purpose;
-
-    private String status;
-    private AssignmentEntity assignmentId;
-
-    public TripResponse() {
+        return new TripResponse(
+                tr.getId(),
+                tr.getAssignment().getId(),
+                tr.getStartDateTime(),
+                tr.getEndDateTime(),
+                tr.getStartOdometer(),
+                tr.getEndOdometer(),
+                tr.getStartFuelLevel(),
+                tr.getEndFuelLevel(),
+                distance,
+                fuelUsed,
+                tr.getDestination(),
+                tr.getPurpose(),
+                tr.getStatus()
+        );
     }
-
-
-    public Long getId() {return id;}
-    public AssignmentEntity getAssignmentId() {return  assignmentId;}
-    public AssignmentEntity getAssignment() {return assignment;}
-    public LocalDateTime getStartDateTime () {return startDateTime;}
-    public LocalDateTime getEndDateTime () {return endDateTime;}
-    public Double getStartOdometer() {return startOdometer;}
-    public Double getEndOdometer() {return endOdometer;}
-    public Double getStartFuelLevel() {return startFuelLevel;}
-    public Double getEndFuelLevel() {return endFuelLevel;}
-    public String getDestination() {return destination;}
-    public String getPurpose() {return purpose;}
-    public String getStatus() {return status;}
-
-    public void setAssignment (AssignmentEntity assignment) {this.assignment = assignment;}
-
-    public void setStartDateTime(LocalDateTime startDateTime){this.startDateTime = startDateTime;}
-    public void setEndDateTime (LocalDateTime endDateTime) {this.endDateTime = endDateTime;}
-    public void setStartOdometer(Double startOdometer){this.startOdometer = startOdometer;}
-    public void setEndOdometer (Double endOdometer) {this.startOdometer =endOdometer;}
-    public void setStartFuelLevel (Double startFuelLevel) {this.startFuelLevel = startFuelLevel;}
-    public void setStatus (String status){this.status =status ;}
-    public void setEndFuelLevel(Double endFuelLevel){this.endFuelLevel = endFuelLevel;}
-    public void setDestination(String destination){this.destination=destination;}
-    public void setPurpose(String purpose ) {this.purpose =purpose;}
-
-
 }
